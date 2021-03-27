@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    border: solid black 1px;
+}
+
+#buttonContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#wordList {
+    border: solid black 1px;
+}
+
+.button {
+    border: solid black 1px;
+    border-radius: 0;
+    background: lightgray;
+    color: black;
+    height: 11px;
+    width: 11px;
+    font-size: 9px;
+    padding: 0;
+}
+
+.button, .button:active:focus {
+    background-size: 10px 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+
+.button:active {
+    background: darkgray;
+}
+
+#selected {
+    background: black;
+    color: white;
+}
