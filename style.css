@@ -13,12 +13,12 @@ body {
     width: 100vw;
     align-items: center;
     justify-content: center;
-    border: solid black 1px;
 }
 
 #buttonContainer {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 
 #wordList {
@@ -34,17 +34,24 @@ body {
     width: 11px;
     font-size: 9px;
     padding: 0;
+    outline: none;
 }
 
 .button, .button:active:focus {
     background-size: 10px 10px;
     background-position: center center;
     background-repeat: no-repeat;
-
 }
 
 .button:active {
     background: darkgray;
+}
+
+.word {
+    padding: 0 5px;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    margin-bottom: -1px;
 }
 
 #selected {

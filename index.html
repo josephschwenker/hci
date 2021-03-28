@@ -11,13 +11,6 @@
     <body>
         <h1>HCI Project</h1>
         <div id="container">
-            <div id="buttonContainer">
-                <button class="button" id="up" tabindex="-1">^</button>
-                <button class="button" id="down" tabindex="-1">v</button>
-                <button class="button" id="select" tabindex="-1">s</button>
-                <button class="button" id="move" tabindex="-1">m</button>
-                <input class="button" id="submit" type="submit" value="d" tabindex="-1">
-            </div>
             <div id="wordList">
                 <div id="selected" class="word">applebees</div>
                 <div class="word">cheesylicious</div>
@@ -41,10 +34,17 @@
                 <div class="word">supercalifragilicious</div>
                 <div class="word">applebees</div>
             </div>
+            <div id="buttonContainer">
+                <button class="button" id="up" tabindex="-1">^</button>
+                <button class="button" id="down" tabindex="-1">v</button>
+                <button class="button" id="select" tabindex="-1">s</button>
+                <button class="button" id="move" tabindex="-1">m</button>
+                <input class="button" id="submit" type="submit" value="d" tabindex="-1">
+            </div>
         </div>
     </body>
+    <script src="words_alpha.js"></script>
     <script src="model.js"></script>
     <script src="view.js"></script>
     <script src="controller.js"></script>
-    <script src="words_alpha.js"></script>
 </html>
