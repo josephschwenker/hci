@@ -20,7 +20,10 @@ class Model {
     // button actions
     
     static select(direction) {
-        this.#data.selected = this.#data.selected + direction < this.#data.words.length ? this.#data.selected + direction : this.#data.selected
+        // ignore if out of bounds
+        if (this.#data.selected + direction < this.#data.words.length && this.#data.selected + direction >= 0) {
+            this.#data.selected = this.#data.selected + direction
+        }
     }
     
     static changeMode(newMode) {
