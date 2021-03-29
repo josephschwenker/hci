@@ -23,4 +23,7 @@ class View {
         // mark the selected word
         wordList.children[d.selected].classList.add("selected")
     }
+
+    
+
 }

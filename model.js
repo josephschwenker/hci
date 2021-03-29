@@ -13,30 +13,61 @@ class Model {
 
     static #currentCondition = -1
 
-    static initializeDictionary () {
-        this.#dictionary = dictionaryString.split("\n")
-    }
-
     static #numberOfRandomWords = 20
 
     static #numberOfShuffles = 20
+    
+    // button actions
+    
+    static select(direction) {
+        this.#data.selected = this.#data.selected + direction < this.#data.words.length ? this.#data.selected + direction : this.#data.selected
+    }
+    
+    static changeMode(newMode) {
+        this.#data.mode = newMode
+    }
 
+    static changeToSelect() {
+        this.changeMode("select")
+    }
 
-    static #actions = {
+    static changeToMove() {
+        this.changeMode("move")
+    }
+    
+    static move(index, direction) {
+        let oldWord = this.#data.words[index]
+        let newWord = this.#data.words[index+direction]
+        // swap words
+        this.#data.words[index] = newWord
+        this.#data.words[index+direction] = oldWord
+    }
 
-        changeMode: function(newMode) {
-            
-        },
-        select: function(index) {
-
-        },
-        move: function(originalPosition, newPosition) {
-
-        },
-        submit: function() {
-
+    static upDown(direction) {
+        if (this.#data.mode === "select") {
+            this.select(-direction)
         }
+        else if (this.#data.mode === "move") {
+            this.move(this.#data.selected, -direction)
+        }
+    }
 
+    static up() {
+        Model.upDown(1)
+    }
+
+    static down() {
+        Model.upDown(-1)
+    }
+    
+    static submit() {
+        window.alert("A winner is you!")
+    }
+
+    // backend functions
+
+    static initializeDictionary () {
+        this.#dictionary = dictionaryString.split("\n")
     }
 
     static getNewWords(n) {
@@ -73,7 +104,7 @@ class Model {
 
     static nextCondition() {
         // change to select mode
-        this.#data.state = "select"
+        this.#data.mode = "select"
         // reset currently-selected word
         this.#data.selected = 0
         // get a new list of words
