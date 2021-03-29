@@ -1,6 +1,14 @@
 // Model contains all of the internal logic for the backend
 class Model {
 
+    // conditions
+
+    static #conditionA = new Condition()
+
+    static #conditions = [
+
+    ]
+
     // all the data needed to render the interface
     static #data = {
         words: [],
