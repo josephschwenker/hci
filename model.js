@@ -13,9 +13,9 @@ class Model {
 
     static #currentCondition = -1
 
-    static #numberOfWords = 5
+    static #numberOfWords = 20
 
-    static #numberOfShuffles = 5
+    static #numberOfShuffles = 20
     
     // button actions
     
