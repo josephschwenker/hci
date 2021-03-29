@@ -35,6 +35,12 @@ body {
     font-size: 9px;
     padding: 0;
     outline: none;
+    margin-bottom: -1px;
+}
+
+.button.currentState {
+    background: black;
+    color: white;
 }
 
 .button, .button:active:focus {

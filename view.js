@@ -6,6 +6,12 @@
 class View {
 
     static render(d) {
+        // reset classes on buttons
+        let buttons = document.getElementsByClassName("button")
+        for (let b of buttons) {
+            b.className = "button"
+        }
+
         // clear the existing word list
         let wordList = document.getElementById("wordList")
         let words = wordList.children
@@ -22,8 +28,16 @@ class View {
         }
         // mark the selected word
         wordList.children[d.selected].classList.add("selected")
+
+        // mark which mode we are in
+        if (d.mode === "select") {
+            document.getElementById("select").classList.add("currentState")
+        }
+        else if (d.mode === "move") {
+            document.getElementById("move").classList.add("currentState")
+        }
     }
 
-    
+
 
 }
