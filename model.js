@@ -13,9 +13,9 @@ class Model {
 
     static #currentCondition = -1
 
-    static #numberOfRandomWords = 20
+    static #numberOfWords = 5
 
-    static #numberOfShuffles = 20
+    static #numberOfShuffles = 5
     
     // button actions
     
@@ -81,13 +81,32 @@ class Model {
     }
     
     static submit() {
-        window.alert("A winner is you!")
+        if ( this.isAlphabetized( this.#data.words) ) {
+            window.alert("You have alphabetized these words correctly.")
+        }
+        else {
+            window.alert("These words are not alphabetized. Please try again.")
+        }
     }
 
     // backend functions
 
-    static isAlphabetized() {
-        
+    static isAlphabetized(wordList) {
+        let alphabetized = Array.from(wordList)
+        alphabetized.sort()
+        // check if the words at each index are equal
+        if ( wordList.length == alphabetized.length ) {
+            for (let i=0; i<wordList.length; i++) {
+                if ( wordList[i] != alphabetized[i] ) {
+                    return false
+                }
+            }
+            return true
+        }
+        else {
+            // unequal lengths, not equal
+            return false
+        }
     }
 
     static initializeDictionary () {
@@ -130,7 +149,7 @@ class Model {
         // reset currently-selected word
         this.#data.selected = 0
         // get a new list of words
-        this.#data.words = this.getNewWords(this.#numberOfRandomWords)
+        this.#data.words = this.getNewWords(this.#numberOfWords)
         // increment the current condition
         this.#currentCondition++
     }
