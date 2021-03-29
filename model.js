@@ -1,13 +1,12 @@
+// TODO unique identifier for each participant, datetime?
+
 // Model contains all of the internal logic for the backend
 class Model {
 
-    // conditions
 
-    static #conditionA = new Condition()
+    // global variables
 
-    static #conditions = [
-
-    ]
+    static #conditions = []
 
     // all the data needed to render the interface
     static #data = {
@@ -24,6 +23,16 @@ class Model {
     static #numberOfWords = 20
 
     static #numberOfShuffles = 20
+
+    static #keyboardShortcutOdds = 0.5
+
+    static #smallButton = 11
+
+    static #largeButton = 100
+
+    static #smallMargin = -1
+
+    static #largeMargin = 100
     
     // button actions
     
@@ -161,6 +170,65 @@ class Model {
         // increment the current condition
         this.#currentCondition++
     }
+
+    // conditions
+
+    static randomizeKeyboardShortcutsEnabled(odds) {
+        let die = Math.random()
+        if ( die < odds ) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+    static initializeConditions() {
+        let conditionA = new Condition()
+        conditionA.conditionName = "small button, small margin"
+        conditionA.marginBottom = this.#smallMargin
+        conditionA.buttonWidth = this.#smallButton
+        conditionA.buttonHeight = this.#smallButton
+        conditionA.numberOfWords = this.#numberOfWords
+        conditionA.numberOfShuffles = this.#numberOfShuffles
+        conditionA.keyboardShortcutOdds = this.#keyboardShortcutOdds
+        conditionA.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionA.keyboardShortcutOdds)
+        this.#conditions[0] = conditionA
+
+        let conditionB = new Condition()
+        conditionB.conditionName = "small button, large margin"
+        conditionB.marginBottom = this.#largeMargin
+        conditionB.buttonWidth = this.#smallButton
+        conditionB.buttonHeight = this.#smallButton
+        conditionB.numberOfWords = this.#numberOfWords
+        conditionB.numberOfShuffles = this.#numberOfShuffles
+        conditionB.keyboardShortcutOdds = this.#keyboardShortcutOdds
+        conditionB.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionB.keyboardShortcutOdds)
+        this.#conditions[1] = conditionB
+
+        let conditionC = new Condition()
+        conditionC.conditionName = "large button, small margin"
+        conditionC.marginBottom = this.#smallMargin
+        conditionC.buttonWidth = this.#largeButton
+        conditionC.buttonHeight = this.#largeButton
+        conditionC.numberOfWords = this.#numberOfWords
+        conditionC.numberOfShuffles = this.#numberOfShuffles
+        conditionC.keyboardShortcutOdds = this.#keyboardShortcutOdds
+        conditionC.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionC.keyboardShortcutOdds)
+        this.#conditions[2] = conditionC
+
+        let conditionD = new Condition()
+        conditionD.conditionName = "large button, large margin"
+        conditionD.marginBottom = this.#largeMargin
+        conditionD.buttonWidth = this.#largeButton
+        conditionD.buttonHeight = this.#largeButton
+        conditionD.numberOfWords = this.#numberOfWords
+        conditionD.numberOfShuffles = this.#numberOfShuffles
+        conditionD.keyboardShortcutOdds = this.#keyboardShortcutOdds
+        conditionD.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionD.keyboardShortcutOdds)
+        this.#conditions[3] = conditionD
+    }
+    
 
     static getData() {
         return this.#data
