@@ -20,9 +20,14 @@ class Model {
     // button actions
     
     static select(direction) {
-        // ignore if out of bounds
-        if (this.#data.selected + direction < this.#data.words.length && this.#data.selected + direction >= 0) {
-            this.#data.selected = this.#data.selected + direction
+        this.#data.selected = this.#data.selected + direction
+        // treat normally if in bounds
+        if (this.#data.selected >= this.#data.words.length || this.#data.selected < 0) {
+            // wrap around if out of bounds
+            this.#data.selected %= this.#data.words.length
+            if (this.#data.selected < 0) {
+                this.#data.selected += this.#data.words.length
+            }
         }
     }
     
@@ -91,11 +96,11 @@ class Model {
 
     static shuffleWords(words) {
         // select an arbitrary number of random words
-        console.log("this.numberOfShuffles: " + this.#numberOfShuffles)
+        //console.log("this.numberOfShuffles: " + this.#numberOfShuffles)
         for (let i=0; i<this.#numberOfShuffles; i++) {
             let randomIndex = Math.floor( Math.random()*words.length )
             let nextIndex = (randomIndex + 1) % words.length
-            console.log(`Swapping indices ${randomIndex} and ${nextIndex}.`)
+            //console.log(`Swapping indices ${randomIndex} and ${nextIndex}.`)
             // then move it forward (modulus) once
             let first = words[randomIndex]
             let second = words[nextIndex]

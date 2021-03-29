@@ -2,7 +2,6 @@
 class Controller {
 
     static init = function(e) {
-        console.log("Initializing interface...")
         Model.init()
         View.render( Model.getData() )
     }

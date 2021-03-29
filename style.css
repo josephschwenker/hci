@@ -49,13 +49,11 @@ body {
 
 .word {
     padding: 0 5px;
-    border-top: solid black 1px;
     border-bottom: solid black 1px;
-    margin-bottom: -1px;
 }
 
-.word:first-child {
-    margin-top: -1px;
+.word:last-child {
+    border-bottom: none;
 }
 
 .selected {
