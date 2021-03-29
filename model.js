@@ -70,7 +70,6 @@ class Model {
             this.move(this.#data.selected, direction)
             this.select(direction)
         }
-        console.log(this.#data.words)
     }
 
     static up() {
@@ -86,6 +85,10 @@ class Model {
     }
 
     // backend functions
+
+    static isAlphabetized() {
+        
+    }
 
     static initializeDictionary () {
         this.#dictionary = dictionaryString.split("\n")
@@ -109,11 +112,9 @@ class Model {
 
     static shuffleWords(words) {
         // select an arbitrary number of random words
-        //console.log("this.numberOfShuffles: " + this.#numberOfShuffles)
         for (let i=0; i<this.#numberOfShuffles; i++) {
             let randomIndex = Math.floor( Math.random()*words.length )
             let nextIndex = (randomIndex + 1) % words.length
-            //console.log(`Swapping indices ${randomIndex} and ${nextIndex}.`)
             // then move it forward (modulus) once
             let first = words[randomIndex]
             let second = words[nextIndex]
