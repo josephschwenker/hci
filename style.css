@@ -3,12 +3,26 @@
     user-select: none;
 }
 
-#container {
+body {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    align-items: center;
     justify-content: center;
+}
+
+.screen {
+    display: none;
+    width: 600px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: left;
 }
 
 #buttonContainer {

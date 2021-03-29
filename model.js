@@ -1,20 +1,28 @@
 // TODO unique identifier for each participant, datetime?
 
+// TODO refuse entry to non-Windows, non-Chrome browsers below version 89
+
 // Model contains all of the internal logic for the backend
 class Model {
-
 
     // global variables
 
     static #conditions = []
 
     // all the data needed to render the interface
+
+    /*
+    Screen flow:
+        researcherInput -> trainInstructions -> train -> taskInstructions -> condition1 -> survey -> taskInstructions -> condition2 -> survey -> taskInstructions -> condition3 -> survey -> taskInstructions -> condition4 -> survey -> result
+    */
     static #data = {
         words: [],
         selected: 0,
-        //modes = ["select", "move"]
-        mode: "select",
+        inputMode: "",
+        screen: "researcherInput",
     }
+
+    static #screens = []
 
     static #dictionary = []
 
@@ -49,7 +57,7 @@ class Model {
     }
     
     static changeMode(newMode) {
-        this.#data.mode = newMode
+        this.#data.inputMode = newMode
     }
 
     static changeToSelect() {
@@ -79,26 +87,26 @@ class Model {
         this.#data.words[newIndex] = oldWord
     }
 
-    static upDown(direction) {
-        if (this.#data.mode === "select") {
+    static #upDown(direction) {
+        if (this.#data.inputMode === "select") {
             this.select(direction)
         }
-        else if (this.#data.mode === "move") {
+        else if (this.#data.inputMode === "move") {
             this.move(this.#data.selected, direction)
             this.select(direction)
         }
     }
 
     static up() {
-        Model.upDown(-1)
+        Model.#upDown(-1)
     }
 
     static down() {
-        Model.upDown(1)
+        Model.#upDown(1)
     }
     
     static submit() {
-        if ( this.isAlphabetized( this.#data.words) ) {
+        if ( this.#isAlphabetized( this.#data.words) ) {
             window.alert("You have alphabetized these words correctly.")
         }
         else {
@@ -108,7 +116,7 @@ class Model {
 
     // backend functions
 
-    static isAlphabetized(wordList) {
+    static #isAlphabetized(wordList) {
         let alphabetized = Array.from(wordList)
         alphabetized.sort()
         // check if the words at each index are equal
@@ -126,7 +134,7 @@ class Model {
         }
     }
 
-    static initializeDictionary () {
+    static #initializeDictionary () {
         this.#dictionary = dictionaryString.split("\n")
     }
 
@@ -162,7 +170,7 @@ class Model {
 
     static nextCondition() {
         // change to select mode
-        this.#data.mode = "select"
+        this.#data.inputMode = "select"
         // reset currently-selected word
         this.#data.selected = 0
         // get a new list of words
@@ -229,13 +237,12 @@ class Model {
         this.#conditions[3] = conditionD
     }
     
-
     static getData() {
         return this.#data
     }
 
     static init() {
-        Model.initializeDictionary()
+        Model.#initializeDictionary()
         Model.nextCondition()
     }
 

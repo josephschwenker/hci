@@ -9,8 +9,19 @@
         <title>HCI Project</title>
     </head>
     <body>
-        <h1>Alphabetization task</h1>
-        <div id="container">
+        <div id="researcherInput" class="screen">
+            <h1>Researcher Input</h1>
+            <p>Welcome to the research study. Please make sure that you meet the following requirements before continuing:</p>
+            <ul>
+                <li>Google Chrome version 89 or newer</li>
+                <li>Microsoft Windows 10</li>
+                <li>A working, fully-charged optical mouse plugged in</li>
+            </ul>
+            <p>If you meet these requirements, please ask the researcher to provide your participant number. Then enter it in the field below and click on the button labeled "Begin Study" to begin.</p>
+            <input type="number" id="participantId" placeholder="Participant ID"><input type="submit" value="Begin Study">
+        </div>
+        <div id="alphabetizationTask" class="screen">
+            <h1>Alphabetization Task</h1>
             <div id="wordList"></div>
             <div id="buttonContainer">
                 <button class="button" id="up" tabindex="-1">^</button>
@@ -22,6 +33,7 @@
         </div>
     </body>
     <script src="words_alpha.js"></script>
+    <script src="screen.js"></script>
     <script src="condition.js"></script>
     <script src="model.js"></script>
     <script src="view.js"></script>
