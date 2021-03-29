@@ -1,5 +1,3 @@
-// disable enter/space to click button
-
 // disable Ctrl++ and Ctrl+- to zoom
 
 // View renders the data object passed to it by Model
@@ -37,7 +35,5 @@ class View {
             document.getElementById("move").classList.add("currentState")
         }
     }
-
-
 
 }

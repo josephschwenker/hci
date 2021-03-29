@@ -31,6 +31,10 @@ class Controller {
         View.render( Model.getData() )
     }
 
+    static preventDefault = function(e) {
+        e.preventDefault()
+    }
+
 }
 
 // init events
@@ -42,3 +46,10 @@ document.getElementById("move").addEventListener("click", Controller.move)
 document.getElementById("up").addEventListener("click", Controller.up)
 document.getElementById("down").addEventListener("click", Controller.down)
 document.getElementById("submit").addEventListener("click", Controller.submit)
+
+// disable keyboard
+document.getElementById("select").addEventListener("keydown", Controller.preventDefault)
+document.getElementById("move").addEventListener("keydown", Controller.preventDefault)
+document.getElementById("up").addEventListener("keydown", Controller.preventDefault)
+document.getElementById("down").addEventListener("keydown", Controller.preventDefault)
+document.getElementById("submit").addEventListener("keydown", Controller.preventDefault)
