@@ -21,5 +21,6 @@ class View {
             wordList.append(div)
         }
         // mark the selected word
+        wordList.children[d.selected].classList.add("selected")
     }
 }

@@ -54,7 +54,11 @@ body {
     margin-bottom: -1px;
 }
 
-#selected {
+.word:first-child {
+    margin-top: -1px;
+}
+
+.selected {
     background: black;
     color: white;
 }
