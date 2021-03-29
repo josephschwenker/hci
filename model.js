@@ -44,28 +44,41 @@ class Model {
     }
     
     static move(index, direction) {
-        let oldWord = this.#data.words[index]
-        let newWord = this.#data.words[index+direction]
+        // check for out of bounds
+        let newIndex = index + direction
+        // wrap around if out of bounds
+        if ( newIndex < 0 || newIndex >= this.#data.words.length ) {
+            // do magic
+            newIndex %= this.#data.words.length
+            if (newIndex < 0) {
+                newIndex += this.#data.words.length
+            }
+        }
+
         // swap words
+        let oldWord = this.#data.words[index]
+        let newWord = this.#data.words[newIndex]
         this.#data.words[index] = newWord
-        this.#data.words[index+direction] = oldWord
+        this.#data.words[newIndex] = oldWord
     }
 
     static upDown(direction) {
         if (this.#data.mode === "select") {
-            this.select(-direction)
+            this.select(direction)
         }
         else if (this.#data.mode === "move") {
-            this.move(this.#data.selected, -direction)
+            this.move(this.#data.selected, direction)
+            this.select(direction)
         }
+        console.log(this.#data.words)
     }
 
     static up() {
-        Model.upDown(1)
+        Model.upDown(-1)
     }
 
     static down() {
-        Model.upDown(-1)
+        Model.upDown(1)
     }
     
     static submit() {
