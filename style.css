@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -49,8 +50,9 @@ body {
     background-repeat: no-repeat;
 }
 
-.button:active {
-    background: darkgray;
+.button:active:not(.currentState) {
+    background: gray;
+    color: white;
 }
 
 .word {

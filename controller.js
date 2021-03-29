@@ -16,6 +16,21 @@ class Controller {
         View.render( Model.getData() )
     }
 
+    static select = function(e) {
+        Model.changeToSelect()
+        View.render( Model.getData() )
+    }
+
+    static move = function(e) {
+        Model.changeToMove()
+        View.render( Model.getData() )
+    }
+
+    static submit = function(e) {
+        Model.submit()
+        View.render( Model.getData() )
+    }
+
 }
 
 // init events
