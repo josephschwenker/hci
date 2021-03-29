@@ -1,27 +1,31 @@
+// Model contains all of the internal logic for the backend
 class Model {
 
-    dictionary = []
-
-    static initializeDictionary () {
-        this.dictionary = dictionaryString.split("\n")
+    // all the data needed to render the interface
+    static #data = {
+        words: [],
+        selected: 0,
+        //modes = ["select", "move"]
+        mode: "select",
     }
 
-    static numberOfRandomWords = 20
+    static #dictionary = []
 
-    static numberOfShuffles = 20
+    static #currentCondition = -1
 
-    static currentWords = []
+    static initializeDictionary () {
+        this.#dictionary = dictionaryString.split("\n")
+    }
 
-    static currentlySelected = undefined
+    static #numberOfRandomWords = 20
 
-    static state = "select"
+    static #numberOfShuffles = 20
 
-    static states = ["select", "move"]
 
-    static actions = {
+    static #actions = {
 
         changeMode: function(newMode) {
-
+            
         },
         select: function(index) {
 
@@ -36,12 +40,12 @@ class Model {
     }
 
     static getNewWords(n) {
-        let length = this.dictionary.length
+        let length = this.#dictionary.length
         let newWords = []
         // get a random list of words
         for (let i=0; i<n; i++) {
             let randomIndex = Math.floor( Math.random()*length )
-            newWords.push( this.dictionary[randomIndex] )
+            newWords.push( this.#dictionary[randomIndex] )
         }
         // alphabetize the words
         newWords.sort()
@@ -53,8 +57,8 @@ class Model {
 
     static shuffleWords(words) {
         // select an arbitrary number of random words
-        console.log("this.numberOfShuffles: " + this.numberOfShuffles)
-        for (let i=0; i<this.numberOfShuffles; i++) {
+        console.log("this.numberOfShuffles: " + this.#numberOfShuffles)
+        for (let i=0; i<this.#numberOfShuffles; i++) {
             let randomIndex = Math.floor( Math.random()*words.length )
             let nextIndex = (randomIndex + 1) % words.length
             console.log(`Swapping indices ${randomIndex} and ${nextIndex}.`)
@@ -66,6 +70,25 @@ class Model {
         }
         return words
     }
-}
 
-Model.initializeDictionary()
+    static nextCondition() {
+        // change to select mode
+        this.#data.state = "select"
+        // reset currently-selected word
+        this.#data.selected = 0
+        // get a new list of words
+        this.#data.words = this.getNewWords(this.#numberOfRandomWords)
+        // increment the current condition
+        this.#currentCondition++
+    }
+
+    static getData() {
+        return this.#data
+    }
+
+    static init() {
+        Model.initializeDictionary()
+        Model.nextCondition()
+    }
+
+}
