@@ -12,6 +12,7 @@ class Controller {
         let participantId = document.getElementById("participantId").value
         if ( participantId.length >= 0 && Number(participantId) != NaN ) {
             Model.beginStudy(participantId)
+            View.render( Model.getData() )
         }
     }
 

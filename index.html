@@ -15,12 +15,36 @@
             <ul>
                 <li>Google Chrome version 89 or newer</li>
                 <li>Microsoft Windows 10</li>
-                <li>A working, fully-charged optical mouse plugged in</li>
+                <li>Google Chrome's zoom level is set to 100%</li>
+                <li>This page is open in incognito mode</li>
+                <li>All browser extensions are disabled</li>
+                <li>A working, fully-charged optical mouse is plugged in</li>
             </ul>
+            <p>Please ask the researcher if you need help with any of these requirements. If you cannot meet these requirements, please tell the researcher and this study will end.</p>
             <p>If you meet these requirements, please ask the researcher to provide your participant number. Then enter it in the field below and click on the button labeled "Begin Study" to begin.</p>
-            <form action="" id="beginStudy">
+            <form id="beginStudy">
                 <input type="number" id="participantId" min="0" required="true" placeholder="Participant ID"><input type="submit" value="Begin Study">
             </form>
+        </div>
+        <div id="generalInstructions" class="screen">
+            <h1>Research Task Instructions</h1>
+            <p>In this research study, you will be asked to alphabetize several lists of words. The words will be displayed on the left, and five clickable buttons will be displayed on the right. You can use the five clickable buttons to alphabetize each list.</p>
+            <p>The image on the right is an example of what the interface will look like.</p>
+            <img style="float: right" src="media/example.png">
+            <p>The alphabetization task will begin in select mode. You will know the system is in select mode when the button with an s has a black background and the letter s is white. In the picture on the right, the system is in select mode.</p>
+            <p>The word that is currently selected is marked on the left with a black background and white text. This is called the cursor. In the picture on the right, the cursor is on the word "apospories."</p>
+            <p>In select mode, click on the button labeled ^ to move the cursor up by one. If the cursor is already at the top, it will wrap around and select the word on the very bottom.</p>
+            <p>In select mode, click on the button labeled v to move the cursor down by one. If the cursor is already at the bottom, it will wrap around and select the word at the very top.</p>
+            <p>To move a word up, click on the button labeled m to switch to move mode. The system is in move mode when the button labeled with an m has a black background and the m is white.</p>
+            <p>In move mode, clicking on the buttons labeled ^ and v will move the cursor in the same direction, but it will also move the currently-selected word with it. The cursor and word will also wrap around if the cursor is at the very top or the very bottom.</p>
+            <p>You can switch back to select mode at any time by clicking the button labeled s.</p>
+            <p>Words that would appear earlier in the dictionary should be placed toward the top of the list, while words that would appear later in the dictionary should be placed toward the bottom.</p>
+            <p>When you are done alphabetizing the list, click on the button labeled with a d to indicate you are finished. If this list is not alphabetized, an error will be displayed, and you will not be able to move on to the next task until the current list is alphabetized.</p>
+            <p>Please press the button labeled Next when you understand these instructions.</p>
+            <button id="generalInstructionsNext">Next</button>
+        </div>
+        <div id="trainInstructions" class="screen">
+            <h1>Training Instructions</h1>
         </div>
         <div id="alphabetizationTask" class="screen">
             <h1>Alphabetization Task</h1>

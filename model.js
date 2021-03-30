@@ -11,7 +11,7 @@ class Model {
 
     static #conditions = []
 
-    static participant
+    static #participant
 
     // all the data needed to render the interface
 
@@ -242,9 +242,10 @@ class Model {
     }
 
     static beginStudy(participantId) {
-        this.participant = new Participant()
-        this.participant.id = participantId
-        this.participant.startTime = new Date()
+        this.#participant = new Participant()
+        this.#participant.id = participantId
+        this.#participant.startTime = new Date()
+        this.#data.screen = "generalInstructions"
     }
     
     static getData() {

@@ -7,11 +7,24 @@ class View {
 
         // render differently for each screen
 
+        // hide all other screens
+
+        let screens = document.getElementsByClassName("screen")
+        for (let s of screens) {
+            if ( !s.classList.contains(d.screen) ) {
+                s.style.display = "none"
+            }
+        }
+
         if ( d.screen == "researcherInput" ) {
             let researcherInput = document.getElementById("researcherInput")
             researcherInput.style.display = "initial"
         }
-        else if ( d.screen = "alphabetizationTask" ) {
+        else if ( d.screen == "generalInstructions" ) {
+            let generalInstructions = document.getElementById("generalInstructions")
+            generalInstructions.style.display = "initial"
+        }
+        else if ( d.screen == "alphabetizationTask" ) {
 
             let alphabetizationTask = document.getElementById("alphabetizationTask")
             // reset classes on buttons
