@@ -45,7 +45,7 @@
         </div>
         <div id="trainingInstructions" class="screen">
             <h1>Training Instructions</h1>
-            <p>We will begin by practicing. On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Press the d button when you are done alphabetizing.</p>
+            <p>We will begin by practicing. On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Click the d button when you are done alphabetizing.</p>
             <p>When you are ready to move to the next screen, press Next.</p>
             <button id="trainingNext">Next</button>
         </div>
@@ -61,6 +61,21 @@
                     <input class="button" id="submit" type="submit" value="d" tabindex="-1">
                 </div>
             </div>
+        </div>
+        <div id="trainingDebrief" class="screen">
+            <h1>Training Completed</h1>
+            <p>You are now ready to begin the study. Click the Next button when you are ready to receive your instructions.</p>
+            <button id="trainingDebriefNext">Next</button>
+        </div>
+        <div id="taskInstructionsNoKeyboardShortcuts" class="screen">
+            <h1>Task Instructions</h1>
+            <p>In the next task, you will be asked to alphabetize a list of words using the interface provided. The next task will not have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
+            <button id="noKeyboardShortcutsNext">Next</button>
+        </div>
+        <div id="taskInstructionsKeyboardShortcuts" class="screen">
+            <h1>Task Instructions</h1>
+            <p>In the next task, you will be asked to alphabetize a list of words using the interface provided. The next task will have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
+            <button id="keyboardShortcutsNext">Next</button>
         </div>
     </body>
     <script src="words_alpha.js"></script>

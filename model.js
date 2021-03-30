@@ -115,6 +115,7 @@ class Model {
     static submit() {
         if ( this.#isAlphabetized( this.#data.words) ) {
             window.alert("You have alphabetized these words correctly.")
+            this.nextScreen()
         }
         else {
             window.alert("These words are not alphabetized. Please try again.")
@@ -273,7 +274,7 @@ class Model {
         this.initializeConditions()
         
         // generate screen sequence
-        this.#screens = ["generalInstructions", "trainingInstructions", "training", "taskInstructions", "alphabetizationTask", "survey"]
+        this.#screens = ["generalInstructions", "trainingInstructions", "training", "trainingDebrief", "taskInstructions", "alphabetizationTask", "survey"]
 
         this.#data.screen = this.#screens[0]
     }
