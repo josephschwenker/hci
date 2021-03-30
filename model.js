@@ -28,6 +28,8 @@ class Model {
 
     static #screens = []
 
+    static #screenIndex = 0
+
     static #dictionary = []
 
     static #currentCondition = -1
@@ -245,7 +247,19 @@ class Model {
         this.#participant = new Participant()
         this.#participant.id = participantId
         this.#participant.startTime = new Date()
-        this.#data.screen = "generalInstructions"
+        
+        // generate study condition sequence
+        
+        // generate screen sequence
+
+        this.#screens = ["generalInstructions", "trainingInstructions", "training", "taskInstructions", "alphabetizationTask", "survey"]
+
+        this.#data.screen = this.#screens[0]
+    }
+
+    static nextScreen() {
+        this.#screenIndex++
+        this.#data.screen = this.#screens[this.#screenIndex]
     }
     
     static getData() {
