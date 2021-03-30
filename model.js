@@ -236,6 +236,10 @@ class Model {
         conditionD.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionD.keyboardShortcutOdds)
         this.#conditions[3] = conditionD
     }
+
+    static beginStudy(participantId) {
+        console.log("Starting study...")
+    }
     
     static getData() {
         return this.#data
