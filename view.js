@@ -14,11 +14,11 @@ class View {
         }
 
         // show the current screen
-        if ( d.screen != "alphabetizationTask" ) {
+        if ( d.screen != "alphabetizationTask" && d.screen != "training" ) {
             let screen = document.getElementById(d.screen)
             screen.style.display = "initial"
         }
-        else if ( d.screen == "alphabetizationTask" ) {
+        else if ( d.screen == "alphabetizationTask" || d.screen == "training" ) {
 
             let alphabetizationTask = document.getElementById("alphabetizationTask")
             // reset classes on buttons
@@ -27,15 +27,22 @@ class View {
                 b.className = "button"
             }
 
+            // apply style conditions to buttons
+            for (let b of buttons) {
+                b.style.marginBottom = d.condition.marginBottom + "px"
+                b.style.width = d.condition.buttonWidth + "px"
+                b.style.height = d.condition.buttonHeight + "px"
+            }
+
             // clear the existing word list
-            let wordList = alphabetizationTask.getElementById("wordList")
+            let wordList = document.getElementById("wordList")
             let words = wordList.children
             for (let i=words.length || 0; i>0; i--) {
                 words[0].remove()
             }
             // add the new words
             for (let w of d.words) {
-                let div = alphabetizationTask.createElement("div")
+                let div = document.createElement("div")
                 div.className = "word"
                 div.textContent = w
                 // append to parent
@@ -46,10 +53,10 @@ class View {
 
             // mark which mode we are in
             if (d.inputMode === "select") {
-                alphabetizationTask.getElementById("select").classList.add("currentState")
+                document.getElementById("select").classList.add("currentState")
             }
             else if (d.inputMode === "move") {
-                alphabetizationTask.getElementById("move").classList.add("currentState")
+                document.getElementById("move").classList.add("currentState")
             }
 
             // show the screen

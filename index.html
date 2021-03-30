@@ -45,16 +45,21 @@
         </div>
         <div id="trainingInstructions" class="screen">
             <h1>Training Instructions</h1>
+            <p>We will begin by practicing. On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Press the d button when you are done alphabetizing.</p>
+            <p>When you are ready to move to the next screen, press Next.</p>
+            <button id="trainingNext">Next</button>
         </div>
         <div id="alphabetizationTask" class="screen">
             <h1>Alphabetization Task</h1>
-            <div id="wordList"></div>
-            <div id="buttonContainer">
-                <button class="button" id="up" tabindex="-1">^</button>
-                <button class="button" id="down" tabindex="-1">v</button>
-                <button class="button" id="select" tabindex="-1">s</button>
-                <button class="button" id="move" tabindex="-1">m</button>
-                <input class="button" id="submit" type="submit" value="d" tabindex="-1">
+            <div id="alphabetizationTaskContainer">
+                <div id="wordList"></div>
+                <div id="buttonContainer">
+                    <button class="button" id="up" tabindex="-1">^</button>
+                    <button class="button" id="down" tabindex="-1">v</button>
+                    <button class="button" id="select" tabindex="-1">s</button>
+                    <button class="button" id="move" tabindex="-1">m</button>
+                    <input class="button" id="submit" type="submit" value="d" tabindex="-1">
+                </div>
             </div>
         </div>
     </body>

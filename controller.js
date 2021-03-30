@@ -22,6 +22,13 @@ class Controller {
         View.render( Model.getData() )
     }
 
+    // training instructions
+
+    static trainingInstructionsNext(e) {
+        Model.nextScreen()
+        View.render( Model.getData() )
+    }
+
     // alphabetization task
 
     static up(e) {
@@ -77,3 +84,6 @@ document.getElementById("beginStudy").addEventListener("submit", Controller.begi
 
 // general instructions
 document.getElementById("generalInstructionsNext").addEventListener("click", Controller.generalInstructionsNext)
+
+// training instructions
+document.getElementById("trainingNext").addEventListener("click", Controller.trainingInstructionsNext)
