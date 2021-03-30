@@ -18,8 +18,8 @@
                 <li>A working, fully-charged optical mouse plugged in</li>
             </ul>
             <p>If you meet these requirements, please ask the researcher to provide your participant number. Then enter it in the field below and click on the button labeled "Begin Study" to begin.</p>
-            <form>
-                <input type="number" id="participantId" required placeholder="Participant ID"><input type="submit" id="beginStudy" value="Begin Study">
+            <form action="" id="beginStudy">
+                <input type="number" id="participantId" min="0" required="true" placeholder="Participant ID"><input type="submit" value="Begin Study">
             </form>
         </div>
         <div id="alphabetizationTask" class="screen">
@@ -37,6 +37,7 @@
     <script src="words_alpha.js"></script>
     <script src="screen.js"></script>
     <script src="condition.js"></script>
+    <script src="participant.js"></script>
     <script src="model.js"></script>
     <script src="view.js"></script>
     <script src="controller.js"></script>

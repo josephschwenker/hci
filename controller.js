@@ -8,8 +8,12 @@ class Controller {
 
     // researcher input
     static beginStudy = function(e) {
-        let participantId = document.getElementById("participantId")
-        Model.beginStudy(participantId.textContent)
+        e.preventDefault()
+        let participantId = document.getElementById("participantId").value
+        console.log(participantId)
+        if ( participantId.length >= 0 && Number(participantId) != NaN ) {
+            Model.beginStudy(participantId.textContent)
+        }
     }
 
     // alphabetization task
@@ -63,4 +67,4 @@ document.getElementById("down").addEventListener("keydown", Controller.preventDe
 document.getElementById("submit").addEventListener("keydown", Controller.preventDefault)
 
 // researcher input
-document.getElementById("beginStudy").addEventListener("click", Controller.beginStudy)
+document.getElementById("beginStudy").addEventListener("submit", Controller.beginStudy)
