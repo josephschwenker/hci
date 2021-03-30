@@ -1,9 +1,9 @@
 class Participant {
     constructor() {
-        id = 0
-        startTime = 0
-        endTime = 0
-        totalTime = 0
+        this.id = 0
+        this.startTime = 0
+        this.endTime = 0
+        this.totalTime = 0
     }
 
     getTotalTime() {

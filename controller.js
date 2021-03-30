@@ -10,9 +10,8 @@ class Controller {
     static beginStudy = function(e) {
         e.preventDefault()
         let participantId = document.getElementById("participantId").value
-        console.log(participantId)
         if ( participantId.length >= 0 && Number(participantId) != NaN ) {
-            Model.beginStudy(participantId.textContent)
+            Model.beginStudy(participantId)
         }
     }
 
