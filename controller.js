@@ -93,3 +93,6 @@ document.getElementById("noKeyboardShortcutsNext").addEventListener("click", Con
 
 // keyboard shortcuts enabled preview
 document.getElementById("keyboardShortcutsNext").addEventListener("click", Controller.nextScreen)
+
+// survey next
+document.getElementById("surveyNext").addEventListener("click", Controller.nextScreen)
