@@ -2,6 +2,8 @@
 
 // TODO refuse entry to non-Windows, non-Chrome browsers below version 89
 
+// TODO send results to a Node.js server
+
 // Model contains all of the internal logic for the backend
 class Model {
 
