@@ -1,5 +1,3 @@
-// disable Ctrl++ and Ctrl+- to zoom
-
 // View renders the data object passed to it by Model
 class View {
 

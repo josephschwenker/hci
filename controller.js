@@ -16,15 +16,9 @@ class Controller {
         }
     }
 
-    // general instructions
-    static generalInstructionsNext(e) {
-        Model.nextScreen()
-        View.render( Model.getData() )
-    }
+    // general screen
 
-    // training instructions
-
-    static trainingInstructionsNext(e) {
+    static nextScreen(e) {
         Model.nextScreen()
         View.render( Model.getData() )
     }
@@ -62,6 +56,9 @@ class Controller {
 
 }
 
+// disable context menu
+window.addEventListener( "contextmenu", e => e.preventDefault() )
+
 // init events
 window.addEventListener("load", Controller.init)
 
@@ -83,7 +80,16 @@ document.getElementById("submit").addEventListener("keydown", Controller.prevent
 document.getElementById("beginStudy").addEventListener("submit", Controller.beginStudy)
 
 // general instructions
-document.getElementById("generalInstructionsNext").addEventListener("click", Controller.generalInstructionsNext)
+document.getElementById("generalInstructionsNext").addEventListener("click", Controller.nextScreen)
 
 // training instructions
-document.getElementById("trainingNext").addEventListener("click", Controller.trainingInstructionsNext)
+document.getElementById("trainingNext").addEventListener("click", Controller.nextScreen)
+
+// training debrief
+document.getElementById("trainingDebriefNext").addEventListener("click", Controller.nextScreen)
+
+// no keyboard shortcuts preview
+document.getElementById("noKeyboardShortcutsNext").addEventListener("click", Controller.nextScreen)
+
+// keyboard shortcuts enabled preview
+document.getElementById("keyboardShortcutsNext").addEventListener("click", Controller.nextScreen)

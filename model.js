@@ -19,6 +19,10 @@ class Model {
     Screen flow:
         researcherInput -> trainInstructions -> train -> taskInstructions -> condition1 -> survey -> taskInstructions -> condition2 -> survey -> taskInstructions -> condition3 -> survey -> taskInstructions -> condition4 -> survey -> result
     */
+
+    // enables debug mode: skip alphabetization by pressing d
+    static debug = true
+
     static #data = {
         words: [],
         selected: 0,
@@ -113,7 +117,7 @@ class Model {
     }
     
     static submit() {
-        if ( this.#isAlphabetized( this.#data.words) ) {
+        if ( this.#isAlphabetized( this.#data.words) || this.debug ) {
             window.alert("You have alphabetized these words correctly.")
             this.nextScreen()
         }
@@ -274,7 +278,17 @@ class Model {
         this.initializeConditions()
         
         // generate screen sequence
-        this.#screens = ["generalInstructions", "trainingInstructions", "training", "trainingDebrief", "taskInstructions", "alphabetizationTask", "survey"]
+        this.#screens = ["generalInstructions", "trainingInstructions", "training", "trainingDebrief"]
+        for (let i=1; i<this.#conditions.length; i++) {
+            let c = this.#conditions[i]
+            if ( c.keyboardShortcutsEnabled ) {
+                this.#screens.push("taskInstructionsKeyboardShortcuts", "alphabetizationTask", "survey")
+            }
+            else {
+                this.#screens.push("taskInstructionsNoKeyboardShortcuts", "alphabetizationTask", "survey")
+            }
+        }
+        this.#screens.push("complete")
 
         this.#data.screen = this.#screens[0]
     }

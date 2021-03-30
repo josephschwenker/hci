@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="researcherInput" class="screen">
-            <h1>Researcher Input</h1>
+            <h1>Environment Check</h1>
             <p>Welcome to the research study. Please make sure that you meet the following requirements before continuing:</p>
             <ul>
                 <li>Google Chrome version 89 or newer</li>
@@ -40,6 +40,7 @@
             <p>You can switch back to select mode at any time by clicking the button labeled s.</p>
             <p>Words that would appear earlier in the dictionary should be placed toward the top of the list, while words that would appear later in the dictionary should be placed toward the bottom.</p>
             <p>When you are done alphabetizing the list, click on the button labeled with a d to indicate you are finished. If this list is not alphabetized, an error will be displayed, and you will not be able to move on to the next task until the current list is alphabetized.</p>
+            <p>Sometimes, you will be able to press the letter on your keyboard that is displayed on each button, and this will have the same effect as clicking the button. The study will tell you when you can do this.</p>
             <p>Please press the button labeled Next when you understand these instructions.</p>
             <button id="generalInstructionsNext">Next</button>
         </div>
@@ -64,7 +65,7 @@
         </div>
         <div id="trainingDebrief" class="screen">
             <h1>Training Completed</h1>
-            <p>You are now ready to begin the study. Click the Next button when you are ready to receive your instructions.</p>
+            <p>You are now ready to begin the study. Click the Next button when you are ready to begin.</p>
             <button id="trainingDebriefNext">Next</button>
         </div>
         <div id="taskInstructionsNoKeyboardShortcuts" class="screen">
@@ -76,6 +77,13 @@
             <h1>Task Instructions</h1>
             <p>In the next task, you will be asked to alphabetize a list of words using the interface provided. The next task will have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
             <button id="keyboardShortcutsNext">Next</button>
+        </div>
+        <div id="survey" class="screen">
+            <h1>Survey</h1>
+        </div>
+        <div id="complete" class="screen">
+            <h1>Study Complete</h1>
+            <p>You have completed the study. Do not close the window. Please notify your researcher that you have completed the study, and they will tell you when you can close the window.</p>
         </div>
     </body>
     <script src="words_alpha.js"></script>
