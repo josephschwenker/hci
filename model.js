@@ -62,6 +62,11 @@ class Model {
     
     // button actions
 
+    static surveyNext(surveyData) {
+        this.#participant.results[this.#conditionIndex].surveyResults = surveyData
+        console.log(this.#participant)
+    }
+
     static logButtonEvent() {
         this.#participant.results[this.#conditionIndex].buttonEventTimes.push( new Date() )
     }

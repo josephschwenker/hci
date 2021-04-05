@@ -27,6 +27,39 @@ class Controller {
         View.render( Model.getData() )
     }
 
+    // survey
+
+    static surveyNext(e) {
+        let stress = document.getElementsByName("stress")
+        let ease = document.getElementsByName("ease")
+        let strain = document.getElementsByName("ease")
+        let comfort = document.getElementsByName("comfort")
+        let fatigue = document.getElementsByName("fatigue")
+        let alertness = document.getElementsByName("alertness")
+
+        function getResponse(question) {
+            for (let e of question) {
+                if (e.checked) {
+                    return Number(e.value)
+                }
+            }
+            return "no response"
+        }
+
+        let surveyData = {
+            stress: getResponse(stress),
+            ease: getResponse(ease),
+            strain: getResponse(strain),
+            comfort: getResponse(strain),
+            fatigue: getResponse(fatigue),
+            alertness: getResponse(alertness)
+        }
+
+        Model.surveyNext(surveyData)
+        View.resetForms()
+        View.render( Model.getData() )
+    }
+
     // alphabetization task
 
     static up(e) {

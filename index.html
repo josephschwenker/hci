@@ -92,7 +92,7 @@
         <div id="survey" class="screen">
             <h1>Survey</h1>
             <p>The statements below are about your experience with the alphabetization task you just completed. Please indicate how much you agree or disagree with each statement and click Next when you are ready for the next task.</p>
-            <form>
+            <form id="surveyForm">
                 <p>I felt stressed while completing this task.</p>
                 <div class="likertContainer">
                     <label><input required="true" type="radio" name="stress" value="-2">Strongly Disagree</label>
@@ -135,13 +135,13 @@
                 </div>
                 <p>I felt alert while completing this task.</p>
                 <div class="likertContainer">
-                    <label><input required="true" type="radio" name="alert" value="-2">Strongly Disagree</label>
-                    <label><input required="true" type="radio" name="alert" value="-1">Moderately Disagree</label>
-                    <label><input required="true" type="radio" name="alert" value="0">Neither agree nor disagree</label>
-                    <label><input required="true" type="radio" name="alert" value="1">Moderately Agree</label>
-                    <label><input required="true" type="radio" name="alert" value="2">Strongly Agree</label>
+                    <label><input required="true" type="radio" name="alertness" value="-2">Strongly Disagree</label>
+                    <label><input required="true" type="radio" name="alertness" value="-1">Moderately Disagree</label>
+                    <label><input required="true" type="radio" name="alertness" value="0">Neither agree nor disagree</label>
+                    <label><input required="true" type="radio" name="alertness" value="1">Moderately Agree</label>
+                    <label><input required="true" type="radio" name="alertness" value="2">Strongly Agree</label>
                 </div>
-                <input type="submit" id="surveyNext" value="next">
+                <input type="submit" id="surveyNext" value="Next">
             </form>
         </div>
         <div id="complete" class="screen">

@@ -62,4 +62,11 @@ class View {
         }
     }
 
+    static resetForms() {
+        let beginStudy = document.getElementById("beginStudy")
+        let survey = document.getElementById("surveyForm")
+        beginStudy.reset()
+        survey.reset()
+    }
+
 }
