@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="researcherInput" class="screen">
-            <h1>Environment Check</h1>
+            <h1>Researcher Input</h1>
             <p>Welcome to the research study. Please make sure that you meet the following requirements before continuing:</p>
             <ul>
                 <li>Google Chrome version 89 or newer</li>
@@ -29,24 +29,31 @@
         <div id="generalInstructions" class="screen">
             <h1>Research Task Instructions</h1>
             <p>In this research study, you will be asked to alphabetize several lists of words. The words will be displayed on the left, and five clickable buttons will be displayed on the right. You can use the five clickable buttons to alphabetize each list.</p>
+            <p>Do not use your web browser's back button or any other web browser buttons during the study. You may only use your left mouse button and the keyboard shortcuts provided to you, if any.</p>
+            <p>Words that would appear earlier in the dictionary should be placed toward the top of the list, while words that would appear later in the dictionary should be placed toward the bottom.</p>
             <p>The image on the right is an example of what the interface will look like.</p>
             <img style="float: right" src="media/example.png">
-            <p>The alphabetization task will begin in select mode. You will know the system is in select mode when the button with an s has a black background and the letter s is white. In the picture on the right, the system is in select mode.</p>
+            <h2>Select Mode or "s"</h2>
+            <p>The alphabetization task will begin in select mode. You can also switch to select mode by clicking the button labeled “s.” You will know the system is in select mode when the button with an “s” has a black background and the letter “s” is white. In the picture on the right, the system is in select mode.</p>
             <p>The word that is currently selected is marked on the left with a black background and white text. This is called the cursor. In the picture on the right, the cursor is on the word "apospories."</p>
-            <p>In select mode, click on the button labeled ^ to move the cursor up by one. If the cursor is already at the top, it will wrap around and select the word on the very bottom.</p>
-            <p>In select mode, click on the button labeled v to move the cursor down by one. If the cursor is already at the bottom, it will wrap around and select the word at the very top.</p>
-            <p>To move a word up, click on the button labeled m to switch to move mode. The system is in move mode when the button labeled with an m has a black background and the m is white.</p>
-            <p>In move mode, clicking on the buttons labeled ^ and v will move the cursor in the same direction, but it will also move the currently-selected word with it. The cursor and word will also wrap around if the cursor is at the very top or the very bottom.</p>
+            <h2>Available Commands in Select Mode</h2>
+            <p>Click on the button labeled “^” to move the cursor up by one. If the cursor is already at the top, it will wrap around and select the word on the very bottom.</p>
+            <p>Click on the button labeled “v” to move the cursor down by one. If the cursor is already at the bottom, it will wrap around and select the word at the very top.</p>
+            <h2>Move Mode or "m"</h2>
+            <p>To move a word up, click on the button labeled "m" to switch to move mode. The system is in move mode when the button labeled with an m has a black background and the m is white.</p>
+            <p>In move mode, clicking on the buttons labeled "^" and "v" will move the cursor in the same direction while bringing with it the word that is currently selected. The cursor and word will also wrap around if the cursor is at the very top or the very bottom.</p>
             <p>You can switch back to select mode at any time by clicking the button labeled s.</p>
-            <p>Words that would appear earlier in the dictionary should be placed toward the top of the list, while words that would appear later in the dictionary should be placed toward the bottom.</p>
-            <p>When you are done alphabetizing the list, click on the button labeled with a d to indicate you are finished. If this list is not alphabetized, an error will be displayed, and you will not be able to move on to the next task until the current list is alphabetized.</p>
-            <p>Sometimes, you will be able to press the letter on your keyboard that is displayed on each button, and this will have the same effect as clicking the button. The study will tell you when you can do this.</p>
+            <h2>Occasional Keyboard Shortcuts</h2>
+            <p>Sometimes, you will be able to press the letter on your keyboard that is displayed on each button, and this will have the same effect as clicking the button. The study will tell you when you can do this in the instructions before the task begins.</p>
+            <h2>Done Mode or "d"</h2>
+            <p>When you are done alphabetizing the list, click on the button labeled with a "d." If this list is not alphabetized, an error will be displayed, and you will not be able to move on to the next task until you finish.</p>
+            <h2>Ready?</h2>
             <p>Please press the button labeled Next when you understand these instructions.</p>
             <button id="generalInstructionsNext">Next</button>
         </div>
         <div id="trainingInstructions" class="screen">
             <h1>Training Instructions</h1>
-            <p>We will begin by practicing. On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Click the d button when you are done alphabetizing.</p>
+            <p>We will begin by practicing. On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Click the "d" button when you are done alphabetizing.</p>
             <p>When you are ready to move to the next screen, press Next.</p>
             <button id="trainingNext">Next</button>
         </div>
