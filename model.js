@@ -63,7 +63,7 @@ class Model {
     // button actions
 
     static logButtonEvent() {
-        this.#participant.results[this.#conditionIndex]
+        this.#participant.results[this.#conditionIndex].buttonEventTimes.push( new Date() )
     }
     
     static select(direction) {
@@ -83,10 +83,12 @@ class Model {
     }
 
     static changeToSelect() {
+        this.logButtonEvent()
         this.changeMode("select")
     }
 
     static changeToMove() {
+        this.logButtonEvent()
         this.changeMode("move")
     }
     
@@ -120,15 +122,20 @@ class Model {
     }
 
     static up() {
+        this.logButtonEvent()
         Model.#upDown(-1)
     }
 
     static down() {
+        this.logButtonEvent()
         Model.#upDown(1)
     }
     
     static submit() {
+        this.logButtonEvent()
         if ( this.#isAlphabetized( this.#data.words) || this.debug ) {
+            // log the end time
+            this.#participant.results[this.#conditionIndex].endTime = new Date()
             window.alert("You have alphabetized these words correctly.")
             this.nextScreen()
         }
@@ -233,6 +240,15 @@ class Model {
             buttonHeight: c.buttonHeight,
             keyboardShortcutsEnabled: c.keyboardShortcutsEnabled,
         }
+
+        // initialize the logger for this condition
+        this.#participant.results[this.#conditionIndex] = new Result()
+        // log condition
+        this.#participant.results[this.#conditionIndex].condition = this.getCondition(this.#conditionIndex, this.#participant.id)
+        // log task start time
+        this.#participant.results[this.#conditionIndex].startTime = new Date()
+
+        console.log(this.#participant)
     }
 
     // conditions
@@ -307,7 +323,6 @@ class Model {
     static beginStudy(participantId) {
         this.#participant = new Participant()
         this.#participant.id = participantId
-        this.#participant.startTime = new Date()
         
         // generate study condition sequence
         this.initializeConditions()
