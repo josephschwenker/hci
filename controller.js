@@ -6,6 +6,10 @@ class Controller {
         View.render( Model.getData() )
     }
 
+    static beforeUnload(e) {
+        return "Please do not use your browser's navigation buttons during the study."
+    }
+
     // researcher input
     static beginStudy(e) {
         e.preventDefault()
@@ -54,6 +58,11 @@ class Controller {
         e.preventDefault()
     }
 
+    static keydown(e) {
+        Model.keydown(e.code)
+        View.render( Model.getData() )
+    }
+
 }
 
 // disable context menu
@@ -61,6 +70,9 @@ window.addEventListener( "contextmenu", e => e.preventDefault() )
 
 // init events
 window.addEventListener("load", Controller.init)
+
+// disable back button
+window.onbeforeunload = Controller.beforeUnload
 
 // alphabetization task
 // button click events
@@ -75,6 +87,9 @@ document.getElementById("move").addEventListener("keydown", Controller.preventDe
 document.getElementById("up").addEventListener("keydown", Controller.preventDefault)
 document.getElementById("down").addEventListener("keydown", Controller.preventDefault)
 document.getElementById("submit").addEventListener("keydown", Controller.preventDefault)
+
+// keyboard shortcuts
+window.addEventListener("keydown", Controller.keydown)
 
 // researcher input
 document.getElementById("beginStudy").addEventListener("submit", Controller.beginStudy)

@@ -126,6 +126,26 @@ class Model {
         }
     }
 
+    static keydown(keyCode) {
+        if (this.#conditions[this.#conditionIndex]?.keyboardShortcutsEnabled) {
+            if (keyCode === "ArrowUp") {
+                this.up()
+            }
+            else if (keyCode === "ArrowDown") {
+                this.down()
+            }
+            else if (keyCode === "KeyS") {
+                this.changeToSelect()
+            }
+            else if (keyCode === "KeyM") {
+                this.changeToMove(0)
+            }
+            else if (keyCode === "KeyD") {
+                this.submit()
+            }
+        }
+    }
+
     // backend functions
 
     static #isAlphabetized(wordList) {
