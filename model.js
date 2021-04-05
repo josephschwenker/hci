@@ -65,6 +65,7 @@ class Model {
     static surveyNext(surveyData) {
         this.#participant.results[this.#conditionIndex].surveyResults = surveyData
         console.log(this.#participant)
+        Model.nextScreen()
     }
 
     static logButtonEvent() {
