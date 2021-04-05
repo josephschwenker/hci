@@ -58,9 +58,12 @@ class Controller {
         e.preventDefault()
     }
 
-    static keydown(e) {
-        Model.keydown(e.code)
-        View.render( Model.getData() )
+    static keypress(e) {
+        // ignore repeated keypresses (from holding the key down)
+        if (!e.repeat) {
+            Model.keydown(e.code)
+            View.render( Model.getData() )
+        }
     }
 
 }
@@ -89,7 +92,7 @@ document.getElementById("down").addEventListener("keydown", Controller.preventDe
 document.getElementById("submit").addEventListener("keydown", Controller.preventDefault)
 
 // keyboard shortcuts
-window.addEventListener("keydown", Controller.keydown)
+window.addEventListener("keydown", Controller.keypress)
 
 // researcher input
 document.getElementById("beginStudy").addEventListener("submit", Controller.beginStudy)

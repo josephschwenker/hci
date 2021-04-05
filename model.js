@@ -52,8 +52,19 @@ class Model {
     static #smallMargin = -1
 
     static #largeMargin = 100
+
+    static #latinSquare =  [
+        [0, 1, 2, 3, 4],
+        [0, 2, 4, 1, 3],
+        [0, 4, 3, 2, 1],
+        [0, 3, 1, 4, 2]
+    ]
     
     // button actions
+
+    static logButtonEvent() {
+        this.#participant.results[this.#conditionIndex]
+    }
     
     static select(direction) {
         this.#data.selected = this.#data.selected + direction
@@ -200,6 +211,10 @@ class Model {
         return words
     }
 
+    static getCondition(condition, participantId) {
+        return this.#conditions[ this.#latinSquare[participantId%4][condition] ]
+    }
+
     static nextCondition() {
         // change to select mode
         this.#data.inputMode = "select"
@@ -208,7 +223,7 @@ class Model {
         // increment the current condition
         this.#conditionIndex++
         // get a new list of words as determined by the current condition
-        let c = this.#conditions[this.#conditionIndex]
+        let c = this.getCondition(this.#conditionIndex, this.#participant.id)
         this.#data.words = this.getNewWords(c.numberOfWords, c.numberOfShuffles)
 
         // pass the relevant data to the data field

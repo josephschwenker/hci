@@ -52,6 +52,10 @@ h1 {
     margin-bottom: -1px;
 }
 
+.button:last-child {
+    margin-bottom: 0px !important;
+}
+
 .button.currentState {
     background: black;
     color: white;
