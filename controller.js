@@ -30,6 +30,7 @@ class Controller {
     // survey
 
     static surveyNext(e) {
+        e.preventDefault()
         let stress = document.getElementsByName("stress")
         let ease = document.getElementsByName("ease")
         let strain = document.getElementsByName("ease")
@@ -146,4 +147,4 @@ document.getElementById("noKeyboardShortcutsNext").addEventListener("click", Con
 document.getElementById("keyboardShortcutsNext").addEventListener("click", Controller.nextScreen)
 
 // survey next
-document.getElementById("surveyNext").addEventListener("click", Controller.nextScreen)
+document.getElementById("surveyForm").addEventListener("submit", Controller.surveyNext)
