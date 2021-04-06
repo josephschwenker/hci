@@ -11,6 +11,12 @@ class View {
             }
         }
 
+        // set an attribute on the survey next button if the next screen is the last one
+        if (d.isLastScreen) {
+            let surveyNext = document.getElementById("surveyNext")
+            surveyNext.setAttribute("data-isLastScreen", "true")
+        }
+
         // show the current screen
         if ( d.screen != "alphabetizationTask" && d.screen != "training" ) {
             let screen = document.getElementById(d.screen)

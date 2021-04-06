@@ -23,6 +23,8 @@ class Controller {
     // general screen
 
     static nextScreen(e) {
+
+
         Model.nextScreen()
         View.render( Model.getData() )
     }
@@ -58,6 +60,18 @@ class Controller {
 
         Model.surveyNext(surveyData)
         View.resetForms()
+        // check if this was the last screen
+        let surveyNext = document.getElementById("surveyNext")
+        let isLastScreen = surveyNext.getAttribute("data-isLastScreen")
+        if ( isLastScreen == "true" ) {
+            // generate a download link
+            let data = "data:text/json;charset=utf-8," + encodeURIComponent( Model.export() )
+            let e = document.getElementById("export")
+            e.setAttribute("href", data)
+            e.setAttribute("download", `participant.json`)
+            e.click()
+        }
+
         View.render( Model.getData() )
     }
 

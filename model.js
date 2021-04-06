@@ -29,6 +29,7 @@ class Model {
         inputMode: "",
         screen: "researcherInput",
         condition: {},
+        isLastScreen: false,
     }
 
     static #screens = []
@@ -64,8 +65,7 @@ class Model {
 
     static surveyNext(surveyData) {
         this.#participant.results[this.#conditionIndex].surveyResults = surveyData
-        console.log(this.#participant)
-        Model.nextScreen()
+        this.nextScreen()
     }
 
     static logButtonEvent() {
@@ -253,8 +253,6 @@ class Model {
         this.#participant.results[this.#conditionIndex].condition = this.getCondition(this.#conditionIndex, this.#participant.id)
         // log task start time
         this.#participant.results[this.#conditionIndex].startTime = new Date()
-
-        console.log(this.#participant)
     }
 
     // conditions
@@ -355,10 +353,21 @@ class Model {
         if ( this.#data.screen == "training" || this.#data.screen == "alphabetizationTask" ) {
             this.nextCondition()
         }
+        // if the screen after this is the end of the study, tell the View
+        if ( this.#screenIndex+1 < this.#screens.length ) {
+            if ( this.#screens[this.#screenIndex+1] == "complete" ) {
+                this.#data.isLastScreen = true
+            }
+        }
+
     }
     
     static getData() {
         return this.#data
+    }
+
+    static export() {
+        let data = JSON.stringify(this.#participant)
     }
 
     static init() {
