@@ -21,7 +21,7 @@ class Model {
     */
 
     // enables debug mode: skip alphabetization by pressing d
-    static debug = true
+    static debug = false
 
     static #data = {
         words: [],
