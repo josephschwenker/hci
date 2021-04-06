@@ -367,7 +367,7 @@ class Model {
     }
 
     static export() {
-        let data = JSON.stringify(this.#participant)
+        return JSON.stringify(this.#participant)
     }
 
     static init() {

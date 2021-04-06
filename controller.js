@@ -68,7 +68,7 @@ class Controller {
             let data = "data:text/json;charset=utf-8," + encodeURIComponent( Model.export() )
             let e = document.getElementById("export")
             e.setAttribute("href", data)
-            e.setAttribute("download", `participant.json`)
+            e.setAttribute("download", "participant.json")
             e.click()
         }
 
