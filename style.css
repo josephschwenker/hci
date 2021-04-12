@@ -119,6 +119,11 @@ em {
     text-align: center;
 }
 
+#closeEndedContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 #export {
     display: block;
 }

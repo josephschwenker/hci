@@ -85,6 +85,14 @@ class View {
     static resetForms() {
         let beginStudy = document.getElementById("beginStudy")
         let survey = document.getElementById("surveyForm")
+
+        let closeEndedContainer = document.getElementById("closeEndedContainer")
+        let n = closeEndedContainer.children.length
+        let orders = []
+        // randomize close-ended question order
+        for (let e of closeEndedContainer.children) {
+            e.style.order
+        }
         beginStudy.reset()
         survey.reset()
     }
