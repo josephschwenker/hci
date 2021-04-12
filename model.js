@@ -55,10 +55,10 @@ class Model {
     static #largeMargin = 100
 
     static #latinSquare =  [
-        [0, 1, 2, 3, 4],
-        [0, 2, 4, 1, 3],
-        [0, 4, 3, 2, 1],
-        [0, 3, 1, 4, 2]
+        [0, 1, 2, 3, 4, 5],
+        [0, 1, 3, 5, 2, 4],
+        [0, 1, 5, 4, 3, 2],
+        [0, 1, 4, 2, 5, 3]
     ]
     
     // button actions
@@ -236,7 +236,9 @@ class Model {
         // increment the current condition
         this.#conditionIndex++
         // get a new list of words as determined by the current condition
+        console.log(this.#conditionIndex, this.#conditions)
         let c = this.getCondition(this.#conditionIndex, this.#participant.id)
+        console.log(c)
         this.#data.words = this.getNewWords(c.numberOfWords, c.numberOfShuffles)
 
         // pass the relevant data to the data field
@@ -268,16 +270,27 @@ class Model {
     }
 
     static initializeConditions() {
-        let trainingCondition = new Condition()
-        trainingCondition.conditionName = "training condition"
-        trainingCondition.marginBottom = this.#smallMargin
-        trainingCondition.buttonWidth = this.#largeButton
-        trainingCondition.buttonHeight = this.#largeButton
-        trainingCondition.numberOfWords = 5
-        trainingCondition.numberOfShuffles = 5
-        trainingCondition.keyboardShortcutOdds = 1
-        trainingCondition.keyboardShortcutsEnabled = true
-        this.#conditions[0] = trainingCondition
+        let trainingConditionNoKeyboard = new Condition()
+        trainingConditionNoKeyboard.conditionName = "training condition, no keyboard shortcuts"
+        trainingConditionNoKeyboard.marginBottom = this.#smallMargin
+        trainingConditionNoKeyboard.buttonWidth = this.#largeButton
+        trainingConditionNoKeyboard.buttonHeight = this.#largeButton
+        trainingConditionNoKeyboard.numberOfWords = 5
+        trainingConditionNoKeyboard.numberOfShuffles = 5
+        trainingConditionNoKeyboard.keyboardShortcutOdds = 0
+        trainingConditionNoKeyboard.keyboardShortcutsEnabled = false
+        this.#conditions[0] = trainingConditionNoKeyboard
+
+        let trainingConditionKeyboard = new Condition()
+        trainingConditionKeyboard.conditionName = "training condition, keyboard shortcuts"
+        trainingConditionKeyboard.marginBottom = this.#smallMargin
+        trainingConditionKeyboard.buttonWidth = this.#largeButton
+        trainingConditionKeyboard.buttonHeight = this.#largeButton
+        trainingConditionKeyboard.numberOfWords = 5
+        trainingConditionKeyboard.numberOfShuffles = 5
+        trainingConditionKeyboard.keyboardShortcutOdds = 1
+        trainingConditionKeyboard.keyboardShortcutsEnabled = true
+        this.#conditions[1] = trainingConditionKeyboard
 
         let conditionA = new Condition()
         conditionA.conditionName = "small button, small margin"
@@ -288,7 +301,7 @@ class Model {
         conditionA.numberOfShuffles = this.#numberOfShuffles
         conditionA.keyboardShortcutOdds = this.#keyboardShortcutOdds
         conditionA.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionA.keyboardShortcutOdds)
-        this.#conditions[1] = conditionA
+        this.#conditions[2] = conditionA
 
         let conditionB = new Condition()
         conditionB.conditionName = "small button, large margin"
@@ -299,7 +312,7 @@ class Model {
         conditionB.numberOfShuffles = this.#numberOfShuffles
         conditionB.keyboardShortcutOdds = this.#keyboardShortcutOdds
         conditionB.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionB.keyboardShortcutOdds)
-        this.#conditions[2] = conditionB
+        this.#conditions[3] = conditionB
 
         let conditionC = new Condition()
         conditionC.conditionName = "large button, small margin"
@@ -310,7 +323,7 @@ class Model {
         conditionC.numberOfShuffles = this.#numberOfShuffles
         conditionC.keyboardShortcutOdds = this.#keyboardShortcutOdds
         conditionC.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionC.keyboardShortcutOdds)
-        this.#conditions[3] = conditionC
+        this.#conditions[4] = conditionC
 
         let conditionD = new Condition()
         conditionD.conditionName = "large button, large margin"
@@ -321,7 +334,7 @@ class Model {
         conditionD.numberOfShuffles = this.#numberOfShuffles
         conditionD.keyboardShortcutOdds = this.#keyboardShortcutOdds
         conditionD.keyboardShortcutsEnabled = this.randomizeKeyboardShortcutsEnabled(conditionD.keyboardShortcutOdds)
-        this.#conditions[4] = conditionD
+        this.#conditions[5] = conditionD
     }
 
     static beginStudy(participantId) {
@@ -332,8 +345,8 @@ class Model {
         this.initializeConditions()
         
         // generate screen sequence
-        this.#screens = ["generalInstructions", "trainingInstructions", "training", "trainingDebrief"]
-        for (let i=1; i<this.#conditions.length; i++) {
+        this.#screens = ["generalInstructions", "trainingInstructionsNoKeyboard", "training", "trainingInstructionsKeyboard", "training", "trainingDebrief"]
+        for (let i=2; i<this.#conditions.length; i++) {
             let c = this.#conditions[i]
             if ( c.keyboardShortcutsEnabled ) {
                 this.#screens.push("taskInstructionsKeyboardShortcuts", "alphabetizationTask", "survey")

@@ -52,12 +52,19 @@
             <p>Please press the button labeled Next when you understand these instructions.</p>
             <button id="generalInstructionsNext">Next</button>
         </div>
-        <div id="trainingInstructions" class="screen">
+        <div id="trainingInstructionsNoKeyboard" class="screen">
             <h1>Training Instructions</h1>
             <p>We will begin by practicing. On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Click the "d" button when you are done alphabetizing.</p>
-            <p>For this training task, keyboard shortcuts are available. Please familiarize yourself with both mouse and keyboard input.</p>
+            <p>For this training task, keyboard shortcuts are <em>not</em> available.</p>
             <p>When you are ready to move to the next screen, press Next.</p>
-            <button id="trainingNext">Next</button>
+            <button id="trainingNoKeyboardNext">Next</button>
+        </div>
+        <div id="trainingInstructionsKeyboard" class="screen">
+            <h1>Training Instructions</h1>
+            <p>On the next screen, try to alphabetize the list on the next screen by using the buttons provided. Click the "d" button when you are done alphabetizing.</p>
+            <p>For this training task, keyboard shortcuts <em>are</em> available. Please use only keyboard shortcuts for this task.</p>
+            <p>When you are ready to move to the next screen, press Next.</p>
+            <button id="trainingKeyboardNext">Next</button>
         </div>
         <div id="alphabetizationTask" class="screen">
             <h1>Alphabetization Task</h1>
@@ -70,6 +77,23 @@
                     <button class="button" id="move" tabindex="-1">m</button>
                     <input class="button" id="submit" type="submit" value="d" tabindex="-1">
                 </div>
+                <div id="alphabetizationKey">
+                    <h2>Button Functions</h2>
+                    <dl>
+                        <dt>^</dt>
+                        <dd>Up</dd>
+                        <dt>v</dt>
+                        <dd>Down</dd>
+                        <dt>s</dt>
+                        <dd>Select Mode</dd>
+                        <dt>m</dt>
+                        <dd>Move Mode</dd>
+                        <dt>d</dt>
+                        <dd>Done/Submit</dd>
+                    </dl>
+                    <p id="keyboardShortcutsAvailable">Keyboard shortcuts <em>are</em> available.</p>
+                    <p id="keyboardShortcutsNotAvailable">Keyboards shortcuts are <em>not</em> available.</p>
+                </div>
             </div>
         </div>
         <div id="trainingDebrief" class="screen">
@@ -80,13 +104,13 @@
         <div id="taskInstructionsNoKeyboardShortcuts" class="screen">
             <h1>Task Instructions</h1>
             <p>In the next task, you will be asked to alphabetize a list of words using the interface provided.</p>
-            <p>The next task will not have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
+            <p>The next task will <em>not</em> have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
             <button id="noKeyboardShortcutsNext">Next</button>
         </div>
         <div id="taskInstructionsKeyboardShortcuts" class="screen">
             <h1>Task Instructions</h1>
             <p>In the next task, you will be asked to alphabetize a list of words using the interface provided.</p>
-            <p>This task will have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
+            <p>This task <em>will</em> have keyboard shortcuts. Click the Next button when you are ready to begin.</p>
             <button id="keyboardShortcutsNext">Next</button>
         </div>
         <div id="survey" class="screen">

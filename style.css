@@ -18,10 +18,15 @@ body {
 #alphabetizationTaskContainer {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;   
 }
 
 h1 {
     text-align: center;
+}
+
+h2 {
+    font-size: 14px;
 }
 
 #container {
@@ -78,6 +83,26 @@ h1 {
 .selected {
     background: black;
     color: white;
+}
+
+#alphabetizationKey {
+    margin-left: 20px;
+    border: solid black 1px;
+    padding: 10px;
+}
+
+dt {
+    float: left;
+}
+
+#keyboardShortcutsAvailable, #keyboardShortcutsNotAvailable {
+    display: none;
+}
+
+em {
+    font-style: italic;
+    font-weight: bold;
+    background: yellow;
 }
 
 .likertContainer {

@@ -11,6 +11,10 @@ class View {
             }
         }
 
+        // hide keyboard shortcut message
+        document.getElementById("keyboardShortcutsAvailable").style.display = "none"
+        document.getElementById("keyboardShortcutsNotAvailable").style.display = "none"
+
         // set an attribute on the survey next button if the next screen is the last one
         if (d.isLastScreen) {
             let surveyNext = document.getElementById("surveyNext")
@@ -61,6 +65,16 @@ class View {
             }
             else if (d.inputMode === "move") {
                 document.getElementById("move").classList.add("currentState")
+            }
+
+            // display whether keyboard shortcuts are available or not
+            if (d.condition.keyboardShortcutsEnabled) {
+                document.getElementById("keyboardShortcutsAvailable").style.display = "initial"
+                document.getElementById("keyboardShortcutsNotAvailable").style.display = "none"
+            }
+            else {
+                document.getElementById("keyboardShortcutsAvailable").style.display = "none"
+                document.getElementById("keyboardShortcutsNotAvailable").style.display = "initial"
             }
 
             // show the screen

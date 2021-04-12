@@ -149,7 +149,8 @@ document.getElementById("beginStudy").addEventListener("submit", Controller.begi
 document.getElementById("generalInstructionsNext").addEventListener("click", Controller.nextScreen)
 
 // training instructions
-document.getElementById("trainingNext").addEventListener("click", Controller.nextScreen)
+document.getElementById("trainingNoKeyboardNext").addEventListener("click", Controller.nextScreen)
+document.getElementById("trainingKeyboardNext").addEventListener("click", Controller.nextScreen)
 
 // training debrief
 document.getElementById("trainingDebriefNext").addEventListener("click", Controller.nextScreen)
