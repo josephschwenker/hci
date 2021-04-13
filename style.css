@@ -119,6 +119,10 @@ em {
     text-align: center;
 }
 
+#survey p {
+    text-align: left;
+}
+
 #closeEndedContainer {
     display: flex;
     flex-direction: column;
@@ -132,5 +136,14 @@ textarea {
 }
 
 #export {
+    display: block;
+}
+
+#demographicSurvey * {
+    margin-bottom: 20px;
+}
+
+#demographicSurvey label * {
+    margin-top: 10px;
     display: block;
 }

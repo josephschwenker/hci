@@ -80,6 +80,7 @@ class View {
             // show the screen
             alphabetizationTask.style.display = "initial"
         }
+        
     }
 
     // fisher-yates shuffle implementation

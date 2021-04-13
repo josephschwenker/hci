@@ -68,6 +68,11 @@ class Model {
         this.nextScreen()
     }
 
+    static demographicSurveyNext(surveyData) {
+        this.#participant.demographicSurveyResults = surveyData
+        this.nextScreen()
+    }
+
     static logButtonEvent() {
         this.#participant.results[this.#conditionIndex].buttonEventTimes.push( new Date() )
     }
@@ -151,21 +156,24 @@ class Model {
     }
 
     static keydown(keyCode) {
-        if (this.#conditions[this.#conditionIndex]?.keyboardShortcutsEnabled) {
-            if (keyCode === "ArrowUp") {
-                this.up()
-            }
-            else if (keyCode === "ArrowDown") {
-                this.down()
-            }
-            else if (keyCode === "KeyS") {
-                this.changeToSelect()
-            }
-            else if (keyCode === "KeyM") {
-                this.changeToMove(0)
-            }
-            else if (keyCode === "KeyD") {
-                this.submit()
+        if (this.#screens[this.#screenIndex] == "alphabetizationTask" || this.#screens[this.#screenIndex] == "training" ) {
+            let c = this.getCondition(this.#conditionIndex, this.#participant.id)
+            if (c.keyboardShortcutsEnabled) {
+                if (keyCode === "ArrowUp") {
+                    this.up()
+                }
+                else if (keyCode === "ArrowDown") {
+                    this.down()
+                }
+                else if (keyCode === "KeyS") {
+                    this.changeToSelect()
+                }
+                else if (keyCode === "KeyM") {
+                    this.changeToMove(0)
+                }
+                else if (keyCode === "KeyD") {
+                    this.submit()
+                }
             }
         }
     }
@@ -236,9 +244,7 @@ class Model {
         // increment the current condition
         this.#conditionIndex++
         // get a new list of words as determined by the current condition
-        console.log(this.#conditionIndex, this.#conditions)
         let c = this.getCondition(this.#conditionIndex, this.#participant.id)
-        console.log(c)
         this.#data.words = this.getNewWords(c.numberOfWords, c.numberOfShuffles)
 
         // pass the relevant data to the data field
@@ -347,7 +353,7 @@ class Model {
         // generate screen sequence
         this.#screens = ["generalInstructions", "trainingInstructionsNoKeyboard", "training", "trainingInstructionsKeyboard", "training", "trainingDebrief"]
         for (let i=2; i<this.#conditions.length; i++) {
-            let c = this.#conditions[i]
+            let c = this.getCondition(i, this.#participant.id)
             if ( c.keyboardShortcutsEnabled ) {
                 this.#screens.push("taskInstructionsKeyboardShortcuts", "alphabetizationTask", "survey")
             }
@@ -355,6 +361,9 @@ class Model {
                 this.#screens.push("taskInstructionsNoKeyboardShortcuts", "alphabetizationTask", "survey")
             }
         }
+
+        this.#screens.push("demographicSurvey")
+
         this.#screens.push("complete")
 
         this.#data.screen = this.#screens[0]

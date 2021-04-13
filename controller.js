@@ -23,8 +23,6 @@ class Controller {
     // general screen
 
     static nextScreen(e) {
-
-
         Model.nextScreen()
         View.render( Model.getData() )
     }
@@ -39,6 +37,7 @@ class Controller {
         let comfort = document.getElementsByName("comfort")
         let fatigue = document.getElementsByName("fatigue")
         let alertness = document.getElementsByName("alertness")
+        let openEnded = document.getElementById("openEnded")
 
         function getResponse(question) {
             for (let e of question) {
@@ -55,24 +54,39 @@ class Controller {
             strain: getResponse(strain),
             comfort: getResponse(strain),
             fatigue: getResponse(fatigue),
-            alertness: getResponse(alertness)
+            alertness: getResponse(alertness),
+            openEnded: openEnded.value,
         }
 
         Model.surveyNext(surveyData)
         View.resetForms()
-        // check if this was the last screen
-        let surveyNext = document.getElementById("surveyNext")
-        let isLastScreen = surveyNext.getAttribute("data-isLastScreen")
-        if ( isLastScreen == "true" ) {
-            // generate a download link
-            let data = "data:text/json;charset=utf-8," + encodeURIComponent( Model.export() )
-            let e = document.getElementById("export")
-            e.setAttribute("href", data)
-            e.setAttribute("download", "participant.json")
-            e.click()
+        View.render( Model.getData() )
+    }
+
+    static demographicSurveyNext(e) {
+        e.preventDefault()
+        let data = {
+            age: document.getElementById("age").value,
+            gender: document.getElementById("gender").value,
         }
 
-        View.render( Model.getData() )
+        Model.demographicSurveyNext(data)
+
+        let surveyNext = document.getElementById("surveyNext")
+
+        // check if this was the last screen
+         let isLastScreen = surveyNext.getAttribute("data-isLastScreen")
+         if ( isLastScreen == "true" ) {
+             // generate a download link
+             let data = "data:text/json;charset=utf-8," + encodeURIComponent( Model.export() )
+             let e = document.getElementById("export")
+             e.setAttribute("href", data)
+             e.setAttribute("download", "participant.json")
+             e.click()
+         }
+
+         View.render( Model.getData() )
+        
     }
 
     // alphabetization task
@@ -107,13 +121,15 @@ class Controller {
     }
 
     static keypress(e) {
-        // ignore repeated keypresses (from holding the key down)
-        if (!e.repeat) {
-            Model.keydown(e.code)
-            View.render( Model.getData() )
+        // only process keypress events on a task screen
+        if ( Model.getData().screen == "alphabetizationTask" || Model.getData().screen == "training" ) {
+            // ignore repeated keypresses (from holding the key down)
+            if (!e.repeat) {
+                Model.keydown(e.code)
+                View.render( Model.getData() )
+            }
         }
     }
-
 }
 
 // disable context menu
@@ -163,3 +179,6 @@ document.getElementById("keyboardShortcutsNext").addEventListener("click", Contr
 
 // survey next
 document.getElementById("surveyForm").addEventListener("submit", Controller.surveyNext)
+
+// demographic survey next
+document.getElementById("demographicSurveyForm").addEventListener("submit", Controller.demographicSurveyNext)
