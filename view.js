@@ -82,19 +82,37 @@ class View {
         }
     }
 
+    // fisher-yates shuffle implementation
+    static shuffle(array) {
+        let a = Array.from(array)
+        // start at the end and work down
+        for (let i=a.length-1; i>0; i--) {
+            // pick an element to swap with
+            let j = Math.round( Math.random()*i )
+            // swap positions
+            let old = a[i]
+            a[i] = a[j]
+            a[j] = old
+        }
+        return a
+    }
+
     static resetForms() {
         let beginStudy = document.getElementById("beginStudy")
         let survey = document.getElementById("surveyForm")
 
         let closeEndedContainer = document.getElementById("closeEndedContainer")
         let n = closeEndedContainer.children.length
-        let orders = []
+        // generate a linear sequence (1, 2, 3, ..., n) to shuffle
+        let orders = Array.from(closeEndedContainer.children)
+        let i=0
+        orders = orders.map( () => i++ )
+        orders = View.shuffle(orders)
         // randomize close-ended question order
-        for (let e of closeEndedContainer.children) {
-            e.style.order
+        for (let i=0; i<n; i++) {
+            closeEndedContainer.children[i].style.order = orders[i]
         }
         beginStudy.reset()
         survey.reset()
     }
-
 }
